@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mainSection {
+  display: flex;
+  font-family: Roboto;
+  letter-spacing: 0.02em;
+ 
+}
+
+
+.rightSection {
+  position: absolute;
+  right:0px;
+  width: 75%;
+  height: 100vh;
+  background-color: #dae5f5;
+  padding-top: 85px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 50px;
+
+  padding-bottom: 15px;
+}
+.rightSection > p {
+  color: #292929;
+  font-size: 20px;
+  font-weight: 530;
+  line-height: 22px;
+
+  padding-bottom: 16%;
+}
+span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+
+  text-align: left;
+  color: #292929;
+}
