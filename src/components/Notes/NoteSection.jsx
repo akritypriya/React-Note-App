@@ -1,7 +1,7 @@
 import arrow from "../../assets/Arrow.svg";
 import { useState, useEffect } from "react";
 import "../CSS/noteSection.css";
-import logo from "../../assets/mainLogo.png";
+import logo from '@assets/mainLogo.png';
 import lock from "../../assets/lock.svg";
 
 const NoteSection = ({ selectedX }) => {
