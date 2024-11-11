@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 Runs the app in the development mode. [npm run dev]
 Access the app:
-Open your browser and go to http://localhost:5173/to start using the app.
+Open your browser and go to http://localhost:5173/  to start using the app.
 
 Overview:
 Pocket Notes is a web-based note-taking application where users can create, view, and organize their notes with a simple and user-friendly interface. 
