@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../CSS/CreateNote.css";
+import "../CSS/createNote.css";
 
 const CreateNote =  ({onFormSubmit,Notetogglepops}) => {
   
