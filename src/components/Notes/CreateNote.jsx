@@ -1,184 +1,94 @@
-// import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import Modal from '@mui/material/Modal';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import TextField from '@mui/material/TextField';
-// import styles from "./createNote.module.css";
+import { useState } from "react";
+import "../CSS/CreateNote.css";
 
-
-
-// function CreateNote() {
-//   const [open, setOpen] = React.useState(false);
-//   const [groupName, setGroupName] = React.useState('');
-//   const [selectedColor, setSelectedColor] = React.useState('');
-//   const colors = ['#A78BFA', '#F472B6', '#67E8F9', '#FDBA74', '#1D4ED8', '#6366F1'];
-
-//   const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
+const CreateNote =  ({onFormSubmit,Notetogglepops}) => {
   
-//   const handleCreate = () => {
-//     if (groupName) {
-//       console.log('Group Created:', { name: groupName, color: selectedColor });
-//       handleClose();
-//     } 
-//         throw new Error('Please enter a group name');
-    
-//   };
+  const [card , setCard] = useState(false); //toggle hide
 
-//   return (
-//     <div>
-//       <button className={styles.noteButton} onClick={handleOpen}>+</button>
-//       <Modal
-//         aria-labelledby="create-group-modal-title"
-//         aria-describedby="create-group-modal-description"
-//         open={open}
-//         onClose={handleClose}
-//       >
-//         <Box className={styles.modalStyle}>
-//           <Typography id="create-group-modal-title" variant="h6" component="h2" sx={{ fontWeight: 'bold', mr: 2 }}>
-//             Create New Group
-//           </Typography>
+  const [groupName, setGroupName] = useState("");  //note name
 
-//           <div className={styles.formRow}>
-//             <Typography sx={{ fontWeight: 'bold', mr: 2 }}>Group Name</Typography>
-//             <TextField
-//               variant="outlined"
-//               value={groupName}
-//               onChange={(e) => setGroupName(e.target.value)}
-//               placeholder="Enter group name"
-//               size="small"
-//               className={styles.groupNameInput}
-//             />
-//           </div>
-//           <div className={styles.formRow}>
-//           <Typography sx={{ fontWeight: 'bold', mr: 2 }}>Choose Colour</Typography>
-//           <div className={styles.colorContainer}>
-//             {colors.map((color) => (
-//               <span
-//                 key={color}
-//                 onClick={() => setSelectedColor(color)}
-//                 className={styles.colorCircle}
-//                 style={{
-//                   backgroundColor: color,
-//                   border: selectedColor === color ? '3px solid #6691FF' : 'none'
-//                 }}
-//               />
-//             ))}
-//           </div>
-//           </div>
-//           <Button
-//             variant="contained"
-//             onClick={handleCreate}
+  const [selectedColor, setSelectedColor] = useState(""); //color
 
-//             className={styles.createButton}>
-//             Create
-//           </Button>
-//         </Box>
-//       </Modal>
-//     </div>
-//   );
-// }
+  const [noteinfo ,setNoteInfo] = useState(" ");   //noteinfo
 
-// export default CreateNote;
+  const [notesinfo, setNotesInfo] = useState([]);
 
-
-
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import styles from "./createNote.module.css";
-
-function CreateNote({onFormSubmit}) {
-  const [open, setOpen] = React.useState(false);
-  const [groupName, setGroupName] = React.useState('');
-  const [selectedColor, setSelectedColor] = React.useState('');
-  const [noteinfo ,setNoteInfo] = React.useState(" ")
-  const [notesinfo, setNotesInfo] = React.useState([]);
-  const colors = ['#A78BFA', '#F472B6', '#67E8F9', '#FDBA74', '#1D4ED8', '#6366F1'];
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setGroupName('');
-    setSelectedColor('');
-    setOpen(false);
-  };
-
-  const handleCreate = () => {
-    if (groupName && selectedColor) {
-      const newGroup = { groupName, selectedColor };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    try {
+      if (groupName === "" || selectedColor === "") {
+        throw new Error("All the Fields Required");
+      }
+      const newNoteInfo = { groupName , selectedColor };
       
-      // Retrieve existing groups from local storage
-      const existingGroups = JSON.parse(localStorage.getItem('NotesInfo')) || {};;
-      existingGroups[groupName]= {infogn:newGroup};
       
-      // Save updated groups back to local storage
-      localStorage.setItem('NotesInfo', JSON.stringify(existingGroups));
+      // Save the note in local storage
+      const storedNotesInfo = JSON.parse(localStorage.getItem("NotesInfo")) || {};    //fetch the array of notes in storedNotes
       
-      setNotesInfo([...notesinfo, newGroup]);
+      storedNotesInfo[groupName] = {infogn:newNoteInfo};
+      
+      
+      //storedNotesInfo.push(newNoteInfo);                                               
+      
+      localStorage.setItem("NotesInfo", JSON.stringify(storedNotesInfo));             
+
+      setNotesInfo([...notesinfo, newNoteInfo]);
       setNoteInfo("");
-      onFormSubmit({ groupName, selectedColor });  //use in another component
-      console.log('Group Created:', newGroup);
-      handleClose();
-    } else {
-      alert('Please enter all the details'); // Changed from throw to alert for user feedback
+      onFormSubmit({ groupName, selectedColor }); // Call the parent component's callback function to store the values
+      togglecardstate(); // Close the popup after submission
+      Notetogglepops();
     }
-  };
- 
-  return (
-    <div>
-      <button className={styles.noteButton} onClick={handleOpen}>+</button>
-      <Modal
-        aria-labelledby="create-group-modal-title"
-        aria-describedby="create-group-modal-description"
-        open={open}
-        onClose={handleClose}
-      >
-        <Box className={styles.modalStyle}>
-          <Typography id="create-group-modal-title" variant="h6" component="h2" sx={{ fontWeight: 'bold', mr: 2 }}>
-            Create New Group
-          </Typography>
+     catch (error) {
+      console.error("An error caught");
+      console.error("Error message: " + error.message);
+      alert(error.message);
+    }
+  }
 
-          <div className={styles.formRow}>
-            <Typography sx={{ fontWeight: 'bold', mr: 2 }}>Group Name</Typography>
-            <TextField
-              variant="outlined"
-              value={groupName}
-              onChange={(e) => setGroupName(e.target.value)}
-              placeholder="Enter group name"
-              size="small"
-              className={styles.groupNameInput}
-            />
-          </div>
-          <div className={styles.formRow}>
-            <Typography sx={{ fontWeight: 'bold', mr: 2 }}>Choose Colour</Typography>
-            <div className={styles.colorContainer}>
-              {colors.map((color) => (
-                <span
-                  key={color}
-                  onClick={() => setSelectedColor(color)}
-                  className={styles.colorCircle}
-                  style={{
-                    backgroundColor: color,
-                    border: selectedColor === color ? '3px solid #6691FF' : 'none'
-                  }}
-                />
-              ))}
+
+  const togglecardstate = () =>{
+    Notetogglepops();
+    setGroupName("");
+    setSelectedColor("");
+  }
+  const stopPropagation = (event) => {
+    event.stopPropagation(); // Prevent the click event from propagating to popupbody
+  }
+
+  return (
+    
+    <div className={`mainContainer ${card ? 'active-modal' : ''}`} onClick={togglecardstate}>
+
+
+      <div className="noteContainer" onClick={stopPropagation} >
+        <div className="noteHeader">
+            <div className="noteSubheader" id="notesub">
+              Create New group
             </div>
-          </div>
-          <Button
-            variant="contained"
-            onClick={handleCreate}
-            className={styles.createButton}>
-            Create
-          </Button>
-        </Box>
-      </Modal>
+            <div className="noteSubheader">
+              <label>
+                Group Name <input type="text" name="myCheckbox" placeholder="Enter your group name..." value={groupName} onChange={(e) => setGroupName(e.target.value)}/>
+              </label>
+            </div>
+            <div className="noteSubheader">
+              <label>
+                Choose colour 
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c1)'}} onChange={() => setSelectedColor('var(--c1)')} />
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c2)'}} onChange={() => setSelectedColor('var(--c2)')} />
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c3)'}} onChange={() => setSelectedColor('var(--c3)')} />
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c4)'}} onChange={() => setSelectedColor('var(--c4)')} />
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c5)'}} onChange={() => setSelectedColor('var(--c5)')} />
+                <input type="radio" name="myCheckbox" style={{backgroundColor : 'var(--c6)'}} onChange={() => setSelectedColor('var(--c6)')} />
+                
+              </label>
+            </div>
+        </div>
+        <div className="noteHeader" id="noteheader">
+            <button id="createBtn" onClick={handleFormSubmit}>Create</button>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default CreateNote;

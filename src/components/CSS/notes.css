@@ -1,0 +1,27 @@
+.mainbody {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Prevent overflow by default */
+    overflow-x: none;
+  }
+  
+  .noteaddermainbody, .Sidebarmain, .notesInfolist {
+    overflow-y: auto; /* Enable vertical scroll only if content overflows */
+    max-height: 100vh;
+  }
+
+  .noteaddermainbody::-webkit-scrollbar,
+.Sidebarmain::-webkit-scrollbar {
+  width: 8px;
+}
+
+.noteaddermainbody::-webkit-scrollbar-thumb,
+.Sidebarmain::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+.noteaddermainbody::-webkit-scrollbar-track,
+.Sidebarmain::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}

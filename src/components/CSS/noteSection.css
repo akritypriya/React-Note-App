@@ -1,0 +1,213 @@
+*{ 
+    margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+       
+       overflow-x: hidden; 
+       overflow-y: hidden;
+      
+  } 
+
+.notemainbody{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #001F8B;
+    color: white;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+/* .arrowback.notesadders{
+    margin-right: 1em;
+} */
+.Notesadd{
+    
+    flex-grow: 1;
+    background-color:#DAE5F5;
+    
+}
+.timeandnotes{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1em;
+    margin: 1em 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; 
+}
+.timeadder{
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    font-weight: bold;
+    color: #888;
+    font-size: 0.9em;
+    display: flex;
+    
+}
+.timeaddernone{
+    font-size: 1em;
+    color: #292929;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+}
+.formofnotes{
+   
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    align-items: left;
+    padding: 10px; 
+}
+.notestext{
+    
+    font-size: large;
+    text-align: left;
+    border-radius: 10px;
+}
+.notesbutton{
+    background-color: transparent;
+    outline: transparent;
+    border: transparent;
+    position: absolute;
+    right:12px;
+    bottom: 10px;
+    margin: 5px;
+    padding: 0;
+}
+.maintextarea{
+    display: none;
+}
+@media only screen and (min-width: 701px) {
+
+    .notemainbody{
+        display: flex;
+        background-color: #001F8B;
+        
+    }
+    /* .arrowback.notesadders{
+        height: fit-content;
+        width: 25px;
+        margin:auto 1em;
+        z-index: 0;
+    }
+    #imgarr{
+        vertical-align: middle;
+        width: inherit;
+        display: none;
+    } */
+    .Notesadd{
+        flex-grow: 1;
+        color:black;
+        background-color: #dae5f5;
+    padding: 1em;
+    overflow:scroll;
+    overflow-x:hidden;
+    }
+    .timeandnotes{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 8px;
+        padding: 1em;
+        margin: 1em 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        text-align: left;
+    }
+    .timeadder{
+        position: absolute;
+        right: 1em;
+        bottom: 1em;
+        font-weight: bold;
+        color: #888;
+        font-size: 0.9em;
+        display: flex;
+        gap: 0.3em;
+    }
+    .timeaddernone{
+        font-size: 1em;
+        color: #292929;
+        line-height: 1.5;
+        margin-bottom: 1.5em;
+    }
+    .formofnotes{
+        margin: 1em;
+        position:relative;
+    }
+    .notestext{
+        padding: 1em;
+        font-size: medium;
+        width: 70vw;
+        height: 10em;
+        border-radius: 10px;
+    }
+    .notesbutton{
+        background-color: transparent;
+        outline: transparent;
+        border: transparent;
+        position: absolute;
+        font-size:large;
+        right: 33px;
+        bottom: 15px;
+    }
+    .maintextarea{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: transparent;
+        width: 100vw;
+        height: 100vh;
+    }
+    .subtextarea{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: #DAE5F5;
+        width: fill;
+        height: fill;
+        z-index: 1;
+    }
+    .bgImg{
+        width: 100vw;
+        height: 100vh;
+        padding-top: 50px;
+        padding-right: 25%;
+    }
+    .Sidebarmain {
+        
+        display: flex;
+        overflow-y: scroll;
+      }
+      
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+    color: black;
+    padding-bottom: 15px;
+    padding-right: 7%;
+  }
+
+  p {
+    color: #292929;
+    font-size:large;
+    line-height: 22px;
+    padding-bottom:18%;
+    padding-right: 5%;
+  }
+  span {
+    font-size: medium;
+    line-height: 32px; 
+    text-align: left;
+    color: #292929;
+    padding-right: 7%;
+  }  

@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+/* * {
+  font-family: 'Roboto', sans-serif;
+} */
+
+:root {
+    --c1: #B38BFA;
+    --c2: #FF79F2;
+    --c3: #43E6FC;
+    --c4: #F19576;
+    --c5: #0047FF;
+    --c6: #6691FF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  
+}
+
+.mainbody {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    z-index: 1;
+    
+}
+
+.mainContainer.active-modal {
+    display: none;
+}
+
+.mainContainer {
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.66);
+    position: absolute;
+
+
+}
+
+.noteContainer {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1%;
+    background-color: white;
+    border-radius: 13px;
+    height: auto;
+    max-height: 80vh; /* Ensure it does not take the full height */
+    overflow-y: auto;
+    
+}
+
+.noteHeader {
+    position: relative;
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+}
+
+#noteheader {
+    display: flex;
+    justify-content: end;
+    
+    
+
+}
+
+.noteSubheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    font-size: 1.2em;
+    /* font-weight: bold; */
+    margin: 10px;
+    
+}
+
+.noteSubheader label {
+    margin-left: 1em;
+}
+
+.noteSubheader input[type=text] {
+    border-radius: 15px;
+    height: 40px;
+    width: 23.5em;
+    padding: 0.75em;
+    vertical-align: text-top;
+    margin-left: 1em;
+    outline: none;
+    border: 2px solid #CCCCCC;
+    color: #979797;
+   font-size: medium;
+  
+    
+}
+
+.noteSubheader input[type=radio] {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-left: 1em;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+   
+}
+
+.noteSubheader input[type=radio]:checked {
+    border: 3px solid #6691FF;
+    
+}
+
+#notesub {
+    font-size: 1.5rem;   
+    margin-bottom: 2rem;
+}
+
+#createBtn {
+    font-size: 1em;
+    font-weight: normal;
+    color: #fff;
+    background-color:  #001F8B;
+    padding: 0.1em 2em;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+#createBtn :active {
+    background-color: #001F8B;
+    
+
+}
+
+  

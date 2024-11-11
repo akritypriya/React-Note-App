@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+  }
+  .sidebarmain{
+    display: block;
+    height: inherit;
+    width: 25%;
+    position: relative;
+    
+}
+
+.sidebarmain button{
+    position: fixed;
+    background-color: #16008b;
+    color: white;
+    border: 2px solid;
+    height: 60px;
+    border-radius: 50%;
+    width: 60px;
+    font-family: Roboto;
+    font-size: 50px;
+    font-weight: 900;
+    left: 300px;
+    top: 660px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+.sidebarmain h1{
+    text-align: center;
+    margin-top:30px;
+    margin-bottom: 20px;
+    position: sticky;
+   
+}
+.notesMainInfolist{
+    margin-bottom:5px;
+}
+.notesInfolist{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em;
+    font-size:20px;
+    font-weight:bold;
+    cursor: pointer;
+   
+
+}
+.notesInfolist.active {
+    position: relative;
+}
+
+.notesInfolist.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    
+    width: 100%;
+    height: 100%;
+    background-color: #2F2F2F2B;
+
+    z-index: -1; /* Place it behind the content */
+}
+
+@keyframes grow {
+    0% {
+        transform: scaleX(0);
+    }
+}
+
+#sellist{
+    border: 4px solid black;
+}
+.notesInfolist .initials{
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 500;
+color: white;
+width: 4em;
+height: 4em;
+border-radius: 50%;
+}
+.notesInfolist .notesInitial{
+margin-left: 1em;
+width: fit-content;
+}
+@media only screen and (min-width: 701px) {
+    .sidebarmain{
+        display: block;
+        height: inherit;
+        width: 33%;
+    }
+}
